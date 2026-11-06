@@ -18,6 +18,18 @@ bash <(curl -fsSL https://raw.githubusercontent.com/akaagiao1/reality-domain-sel
 
 启动后按提示选择扫描或检测。系统需要预先安装 `curl`；如果提示找不到该命令，可先运行 `apt-get update && apt-get install -y curl ca-certificates`（需要 root 权限，或在每条命令前加 `sudo`）。
 
+## 单独使用 RealiTLScanner
+
+只需要扫描候选域名时，复制这条命令：
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/akaagiao1/reality-domain-selector/main/reality-scanner.sh)
+```
+
+菜单支持根据 VPS IPv4 地址扫描其所在的 `/24` 网段，也支持输入 IP、域名、CIDR、目标列表文件或网页 URL。脚本使用端口 443、并发 10、单次超时 5 秒，结果写入当前目录新建的 `realitlscanner-*/results.csv`。扫描单个 IP 或域名时，上游会自动启用无限扩展扫描，需要按 Ctrl+C 停止；选择 `/24` 则会有限扫描。仅扫描获授权的目标，上游建议在本地运行扫描，避免 VPS 被标记。
+
+脚本下载并校验上游 v0.2.3 的 Linux 二进制；目标列表中的每行是一个 IP、CIDR 或域名。可以将生成的 CSV 交给前面的域名筛选脚本，但不同版本的工具格式可能不兼容；请检查实际检测结果。扫描发现的证书域名未必可直接用于 REALITY，需要进一步验证 SNI 和证书等条件，也不代表 ASN 匹配。
+
 ## 其他使用方法
 
 下载仓库后运行：
