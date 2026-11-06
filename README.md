@@ -8,7 +8,17 @@
 - 能访问 GitHub Releases；需要 `curl`、`unzip` 和 `sha256sum`。缺少时，脚本会使用 `apt-get` 安装，需要 root 或 sudo 权限。
 - 检测时需要能访问候选网站。结果反映运行脚本的机器到目标站的连接情况。
 
-## 使用
+## 一键运行
+
+在 Debian 或 Ubuntu 的终端复制运行：
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/akaagiao1/reality-domain-selector/main/reality-domain.sh)
+```
+
+启动后按提示选择扫描或检测。系统需要预先安装 `curl`；如果提示找不到该命令，可先运行 `apt-get update && apt-get install -y curl ca-certificates`（需要 root 权限，或在每条命令前加 `sudo`）。
+
+## 其他使用方法
 
 下载仓库后运行：
 
